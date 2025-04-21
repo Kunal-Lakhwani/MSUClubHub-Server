@@ -3,4 +3,5 @@ export enum ImageDirectories{
   ClubProfile = 'ClubProfile', 
   ClubBanner = 'ClubBanner', 
   FlairIcon = 'FlairIcon',
+  PostImage = 'PostImage',
 }

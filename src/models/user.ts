@@ -9,7 +9,8 @@ export interface IUser extends Document {
   Email: string,
   PasswordHash: string,
   Salt: string,
-  Registered_Club: Types.ObjectId | IClub,
+  Registered_Club?: Types.ObjectId | IClub,
+  Followed_Clubs: Types.ObjectId[] | IClub[]
 }
 
 const userSchema = new mongoose.Schema<IUser>({
@@ -20,7 +21,8 @@ const userSchema = new mongoose.Schema<IUser>({
   Email: { type: String, required: true, unique: true},
   PasswordHash: { type: String, required: true},
   Salt: { type: String, required: true},
-  Registered_Club: { type: mongoose.Schema.Types.ObjectId, ref: "Club", default: "", index:true }
+  Registered_Club: { type: mongoose.Schema.Types.ObjectId, ref: "Club", index:true },
+  Followed_Clubs: { type: [ mongoose.Schema.Types.ObjectId ], ref: "Club", default: [], index:true },
 });
 
 export const User = mongoose.model<IUser>( "User", userSchema );

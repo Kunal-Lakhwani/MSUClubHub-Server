@@ -3,6 +3,8 @@ import controller, { upload } from "../controllers/club-controller";
 
 const clubRouter = express.Router();
 
+clubRouter.get("/:clubName", controller.FetchClub);
+
 clubRouter.post( "/CreateClub", upload.fields(
     [
       {name: "profilePicture",maxCount: 1},
@@ -16,5 +18,6 @@ clubRouter.post( "/EditClub", upload.fields(
     {name: "bannerImage",maxCount: 1}
   ]
 ), controller.EditClub);
+
 
 export default clubRouter;
